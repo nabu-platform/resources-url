@@ -1,7 +1,6 @@
 package be.nabu.libs.resources.url;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.security.Principal;
 import java.util.Arrays;
@@ -23,15 +22,11 @@ public class URLResourceResolver implements ResourceResolver {
 	public ResourceRoot getResource(URI uri, Principal principal) throws IOException {
 		if (defaultSchemes.contains(uri.getScheme())) {
 			try {
-				if (URLResourceContainer.isFile(uri)) {
-					return new URLReadableResource(null, uri.toURL());
-				}
-				else {
-					return new URLResourceContainer(null, uri.toURL());
-				}
+				uri.toURL().openStream().close();
+				return new URLReadableResource(null, uri.toURL());
 			}
-			catch (MalformedURLException e) {
-				throw new RuntimeException(e);
+			catch (IOException e) {
+				// do nothing
 			}
 		}
 		return null;
