@@ -1,16 +1,17 @@
 package be.nabu.libs.resources.url;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
 import be.nabu.libs.resources.URIUtils;
+import be.nabu.libs.resources.api.LocatableResource;
 import be.nabu.libs.resources.api.Resource;
 import be.nabu.libs.resources.api.ResourceContainer;
-import be.nabu.libs.resources.api.ResourceRoot;
 
-abstract public class URLResource implements Resource, ResourceRoot {
+abstract public class URLResource implements Resource, Closeable, LocatableResource {
 
 	private URL url;
 	private URLResourceContainer parent;

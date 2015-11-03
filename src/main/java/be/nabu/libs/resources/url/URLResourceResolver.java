@@ -6,8 +6,8 @@ import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 
+import be.nabu.libs.resources.api.Resource;
 import be.nabu.libs.resources.api.ResourceResolver;
-import be.nabu.libs.resources.api.ResourceRoot;
 
 public class URLResourceResolver implements ResourceResolver {
 
@@ -19,7 +19,7 @@ public class URLResourceResolver implements ResourceResolver {
 	}
 
 	@Override
-	public ResourceRoot getResource(URI uri, Principal principal) throws IOException {
+	public Resource getResource(URI uri, Principal principal) throws IOException {
 		if (defaultSchemes.contains(uri.getScheme())) {
 			try {
 				uri.toURL().openStream().close();
