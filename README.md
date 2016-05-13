@@ -1,0 +1,1 @@
+Supports default URL loading
