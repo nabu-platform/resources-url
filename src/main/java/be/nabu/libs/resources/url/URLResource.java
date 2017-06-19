@@ -22,7 +22,7 @@ abstract public class URLResource implements Resource, Closeable, LocatableResou
 	}
 	
 	@Override
-	public URI getURI() {
+	public URI getUri() {
 		try {
 			return url.toURI();
 		}

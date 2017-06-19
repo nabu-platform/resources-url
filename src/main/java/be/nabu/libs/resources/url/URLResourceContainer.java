@@ -23,7 +23,7 @@ public class URLResourceContainer extends URLResource implements ResourceContain
 
 	@Override
 	public URLResource getChild(String name) {
-		URI child = URIUtils.getChild(getURI(), name);
+		URI child = URIUtils.getChild(getUri(), name);
 		try {
 			if (isFile(child)) {
 				return new URLReadableResource(this, child.toURL());
